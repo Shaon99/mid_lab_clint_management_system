@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\Attendence;
+
 use DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -173,6 +175,77 @@ class adminController extends Controller
             }
         }
 
+public function attendence(){
+    $data=['LoggedUserInfo'=>Admin::where('id','=',session('LoggedUser'))->first()];
+    $all=DB::table('users')->get();
+    return view('admin.attendence',$data,compact('all'));
+}
 
+
+public function takeattendence(Request $req){
+
+    $date=$req->att_date;
+    $att_date=DB::table('attendence')->where('att_date',$date)->first();
+    if($att_date){
+        return back()->with('success1','Attendance Already Taken For Today');
+    }else{
+    foreach($req->user_id as $id){
+        $data[]=[
+      "user_id"=>$id,
+      "attendence"=>$req->attendence[$id],
+      "att_date"=>$req->att_date,
+      "att_year"=>$req->att_year,
+      "month"=>$req->att_month,
+
+      "edit_date"=>date("d-m-y"),
+    ];
+    }
+    $att=DB::table('attendence')->insert($data);
+    if($att){
+     return back()->with('success','Attendence has been successfuly Taken');
+
+    }else{
+     return back()->with('fail','Something went wrong, try again later');
+
+    }
+}
+}
+
+public function allattendence(){
+    $data=['LoggedUserInfo'=>Admin::where('id','=',session('LoggedUser'))->first()];
+    $att=DB::table('attendence')->select('edit_date')->groupBy('edit_date')->get();
+    return view('admin.allattendence',$data,compact('att'));
+}
+
+public function editatt($edit_date){  
+    $date=DB::table('attendence')->where('edit_date', $edit_date)->first();
+
+    $data=['LoggedUserInfo'=>Admin::where('id','=',session('LoggedUser'))->first()];
+    $att=DB::table('attendence')->join('users','attendence.user_id','users.id')->select('users.name','users.type','attendence.*')->where('edit_date',$edit_date)->get();
+
+    return view('admin.editatt',$data,compact('att','date'));
+
+}
         
+public function updateatt(Request $req){
+
+    foreach($req->id as $id){
+        $data=[
+      "attendence"=>$req->attendence[$id],
+      "att_date"=>$req->att_date,
+      "att_year"=>$req->att_year,
+    ];
+      $atten=Attendence::where(['att_date'=>$req->att_date, 'id'=>$id])->first();
+      $atten->update($data);
+      if( $atten){
+        return back()->with('success','Attendence has been successfuly Updated');
+   
+       }else{
+        return back()->with('fail','Something went wrong, try again later');
+   
+       }
+}
+}
+
+
 }

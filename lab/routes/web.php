@@ -39,6 +39,16 @@ Route::group(['middleware'=>['check']], function(){
     Route::get('delete/role/{id}',[adminController::Class,'delete']);
     Route::get('edit/role/{id}',[adminController::Class,'edit']);
     Route::post('update/role/{id}',[adminController::Class,'update']);
+
+    Route::get('/attendence',[adminController::class,'attendence']);
+    Route::post('/take/attendence',[adminController::class,'takeattendence'])->name('take.attendence');
+    Route::get('/all/attendence',[adminController::class,'allattendence'])->name('all.attendence');
+    Route::get('/edit/attendence/{edit_date}',[adminController::Class,'editatt']);
+    Route::post('/update/attendence',[adminController::Class,'updateatt']);
+
+
+
+
 });    
 
 

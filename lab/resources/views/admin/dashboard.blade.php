@@ -3,9 +3,9 @@
 <div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a style="margin-left:15px;" class="navbar-brand font-weight-bold" href="/dashboard">Dashboard</a>
-    <a style="margin-left:15px;"class="navbar-brand font-weight-bold" href="{{route('staff')}}">Company Staff</a>
-    <a style="margin-left:15px;"class="navbar-brand font-weight-bold" href="#">Check Attendance</a>
-    <a style="margin-left:15px;"class="navbar-brand font-weight-bold" href="">Manage Customers</a>
+    <a style="margin-left:15px;"class="navbar-brand font-weight-bold" href="{{route('staff')}}">Manage Staff</a>
+    <a style="margin-left:15px;"class="navbar-brand font-weight-bold" href="/attendence">Manage Attendence</a>
+    <a style="margin-left:15px;"class="navbar-brand font-weight-bold" href="">Manage Customer</a>
     <a style="margin-left:15px;"class="navbar-brand font-weight-bold" href="{{route('role')}}">Role</a>
     <div style="margin-left:15px;" class="btn btn-light  my-4 my-sm-0 ">  
     <style>
