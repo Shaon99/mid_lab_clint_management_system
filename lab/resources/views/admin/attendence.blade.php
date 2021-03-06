@@ -43,7 +43,7 @@
        <td>{{$row->type}}</td>
        <input type="hidden" name="user_id[]" value="{{$row->id}}">
        <td>
-       <input type="radio" required="" name="attendence[{{$row->id}}]" value="present">Present &nbsp &nbsp &nbsp &nbsp
+       <input type="radio" required="" name="attendence[{{$row->id}}]" value="Present">Present &nbsp &nbsp &nbsp &nbsp
        <input type="radio" name="attendence[{{$row->id}}]" value="Absence">Absence
        </td>
        <input type="hidden" name="att_date" value="{{date('d/m/y')}}">

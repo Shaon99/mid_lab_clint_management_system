@@ -6,7 +6,11 @@
   <div class="card-header text-success">
    All Attendance
   </div>
-
+  @if(Session::get('success'))
+             <div class="alert alert-success">
+                {{ Session::get('success') }}
+             </div>
+           @endif
   <table class="table table-dark" >
         <tr>
         <th>SL</th>
@@ -22,7 +26,7 @@
        <td>{{$sl++}}</td>
        <td>{{$row->edit_date}}</td>
        <td>
-        <a href="{{URL::to('edit/attendence/' .$row->edit_date)}}" class="btn btn-md btn-info">Edit</a>
+        <a href="{{URL::to('edit/attendence/' .$row->edit_date)}}" class="btn btn-md btn-info">View</a>
         <a href="{{ URL::to('delete/attendence/' .$row->edit_date)}}" class="btn btn-md btn-danger" >Delete</a>
 
         </td>

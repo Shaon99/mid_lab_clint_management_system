@@ -38,8 +38,8 @@
        <td>{{$row->type}}</td>
        <input type="hidden" name="id[]" value="{{$row->id}}">
        <td>
-       <input type="radio" required=""<?php if($row->attendence=='present'){
-           echo"checked";}?> name="attendence[{{$row->id}}]" value="present">Present 
+       <input type="radio" required=""<?php if($row->attendence=='Present'){
+           echo"checked";}?> name="attendence[{{$row->id}}]" value="Present">Present 
            &nbsp &nbsp &nbsp &nbsp
        <input type="radio" <?php if($row->attendence=='Absence'){
            echo"checked";}?> name="attendence[{{$row->id}}]" value="Absence">Absence

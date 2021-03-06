@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\Customer;
+use DB;
+
 use Illuminate\Support\Facades\Hash;
 class loginController extends Controller
 {
@@ -24,7 +27,7 @@ class loginController extends Controller
             'password' => 'required|min:6',
 
             ]);
-            $customer = new customers;
+            $customer = new Customer;
             $customer->name = $request->name;
             $customer->username = $request->username;
             $customer->email = $request->email;

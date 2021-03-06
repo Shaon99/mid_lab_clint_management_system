@@ -5,19 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Attendence extends Model
+class Customer extends Model
 {
     protected $fillable = [
-        'user_id',
-        'edit_date',
-        'att_date',
-        'month',
-        'att_year',
-        'attendence',
+        'name',
+        'username',
+        'email',
+        'phone',
+        'password',
 
 
     ];
-    protected $table='attendence';
-
+    protected $table = 'customers';
     use HasFactory;
 }

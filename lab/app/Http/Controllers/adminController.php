@@ -15,7 +15,10 @@ class adminController extends Controller
     public function dashboard(){
         $data=['LoggedUserInfo'=>Admin::where('id','=',session('LoggedUser'))->first()];
         $user=DB::table('users')->count();
-        return view('admin.admindashboard',$data,compact('user'));
+    
+        $cus=DB::table('customers')->count();
+
+        return view('admin.admindashboard',$data,compact('user','cus'));
     }
 
     //staff
@@ -228,12 +231,10 @@ public function editatt($edit_date){
 }
         
 public function updateatt(Request $req){
-
     foreach($req->id as $id){
         $data=[
       "attendence"=>$req->attendence[$id],
-      "att_date"=>$req->att_date,
-      "att_year"=>$req->att_year,
+    
     ];
       $atten=Attendence::where(['att_date'=>$req->att_date, 'id'=>$id])->first();
       $atten->update($data);
@@ -246,6 +247,19 @@ public function updateatt(Request $req){
        }
 }
 }
+public function deleteatt($edit_date){
+    $data=DB::table('attendence')->where ('edit_date',$edit_date)->delete();
+    if($data){
+        return back()->with('success','Attendence has been successfuly Deleted');
 
+       }
+}
+
+//customer
+public function customer(){
+    $data=['LoggedUserInfo'=>Admin::where('id','=',session('LoggedUser'))->first()];
+    $cus=DB::table('customers')->get();
+    return view('admin.customers',$data,compact('cus'));
+}
 
 }

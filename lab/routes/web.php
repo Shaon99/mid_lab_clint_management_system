@@ -44,9 +44,13 @@ Route::group(['middleware'=>['check']], function(){
     Route::post('/take/attendence',[adminController::class,'takeattendence'])->name('take.attendence');
     Route::get('/all/attendence',[adminController::class,'allattendence'])->name('all.attendence');
     Route::get('/edit/attendence/{edit_date}',[adminController::Class,'editatt']);
-    Route::post('/update/attendence',[adminController::Class,'updateatt']);
+    Route::post('/update/attendence/',[adminController::Class,'updateatt']);
+    Route::get('/delete/attendence/{edit_date}',[adminController::Class,'deleteatt']);
 
 
+//cus
+
+Route::get('/customer',[adminController::class,'customer']);
 
 
 });    
