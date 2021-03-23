@@ -19,7 +19,7 @@
     <li><span>{{$LoggedUserInfo->name}}</span></li>
     </div>
 
- <div class="btn btn-danger my-2 my-sm-0 " style="margin-left:600px;">
+ <div class="btn btn-danger my-2 my-sm-0 " style="margin-left:452px;">
  
      <a class="text-light"style="text-decoration: none;" href="/logout">Logout</a>
    </div>
